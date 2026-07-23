@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
+
 import { Avatar } from '@/components/ui';
 import { useConversationsStore, type Conversation } from '@/store/useConversationsStore';
 import clsx from 'clsx';

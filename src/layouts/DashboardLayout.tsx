@@ -1,6 +1,6 @@
+import { AppLogo } from '@/components/common/AppLogo'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import {
-  BotMessageSquare,
   LayoutDashboard,
   MessageSquare,
   ListChecks,
@@ -25,8 +25,9 @@ import {
   ToggleLeft,
   AlertTriangle,
   X,
+  Zap,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useAuthStore, type Role } from '@/store/useAuthStore'
 import { Avatar, Badge, Dropdown } from '@/components/ui'
 import { useTheme } from '@/hooks/useTheme'
@@ -44,10 +45,8 @@ const NAV_BY_ROLE: Record<Role, NavItem[]> = {
       icon: MessageSquare,
     },
     { name: 'Approval Queue', href: '/dashboard/approvals', icon: ListChecks },
-    { name: 'Scheduler', href: '/dashboard/scheduler', icon: Calendar },
-    { name: 'Tasks', href: '/dashboard/tasks', icon: CheckSquare },
+    { name: 'Automation', href: '/dashboard/automation', icon: Zap },
     { name: 'Contacts', href: '/dashboard/contacts', icon: Users },
-    { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart },
     { name: 'Settings', href: '/dashboard/settings', icon: Settings },
     { name: 'Billing', href: '/dashboard/billing', icon: CreditCard },
     { name: 'Profile', href: '/dashboard/profile', icon: UserIcon },
@@ -145,7 +144,7 @@ export const DashboardLayout = () => {
           className="flex items-center gap-2 font-bold text-lg"
         >
           <div className="bg-primary text-primary-foreground p-1 rounded-md">
-            <BotMessageSquare size={20} />
+            <AppLogo size={20} />
           </div>
           <span>ChatFlow AI</span>
         </Link>
@@ -169,7 +168,7 @@ export const DashboardLayout = () => {
         {/* Logo */}
         <div className="p-5 hidden md:flex items-center gap-2 font-bold text-xl tracking-tight border-b border-border">
           <div className="bg-primary text-primary-foreground p-1.5 rounded-lg">
-            <BotMessageSquare size={22} />
+            <AppLogo size={22} />
           </div>
           <span>ChatFlow AI</span>
         </div>
@@ -299,8 +298,14 @@ export const DashboardLayout = () => {
         </header>
 
         {/* Page */}
-        <main className="flex-1 p-4 md:p-6">
-          <Outlet />
+        <main className="flex-1 p-4 md:p-6 relative">
+          <Suspense fallback={
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            </div>
+          }>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
 

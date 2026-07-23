@@ -82,13 +82,8 @@ const ApprovalQueue = lazy(() =>
     default: m.ApprovalQueue,
   }))
 )
-const Scheduler = lazy(() =>
-  import('./features/dashboard/pages/Scheduler').then((m) => ({
-    default: m.Scheduler,
-  }))
-)
-const Tasks = lazy(() =>
-  import('./features/dashboard/pages/Tasks').then((m) => ({ default: m.Tasks }))
+const Automation = lazy(() =>
+  import('./features/dashboard/pages/Automation').then((m) => ({ default: m.Automation }))
 )
 const Contacts = lazy(() =>
   import('./features/dashboard/pages/Contacts').then((m) => ({
@@ -279,8 +274,7 @@ function App() {
               <Route index element={<DashboardHome />} />
               <Route path="conversations" element={<Conversations />} />
               <Route path="approvals" element={<ApprovalQueue />} />
-              <Route path="scheduler" element={<Scheduler />} />
-              <Route path="tasks" element={<Tasks />} />
+              <Route path="automation" element={<Automation />} />
               <Route path="contacts" element={<Contacts />} />
               <Route path="analytics" element={<Analytics />} />
               <Route path="settings" element={<Settings />} />

@@ -7,7 +7,6 @@ import {
   Shield,
   BarChart3,
   CheckCircle2,
-  MessageSquare,
   Users,
   Clock,
   Star,
@@ -596,31 +595,58 @@ export function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary/5 dark:bg-primary/10" />
+        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-3xl bg-gradient-to-br from-primary to-primary/80 p-12 text-primary-foreground shadow-2xl"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative overflow-hidden rounded-[2.5rem] bg-slate-950 text-white shadow-2xl shadow-primary/20"
           >
-            <MessageSquare className="h-12 w-12 mx-auto mb-6 opacity-80" />
-            <h2 className="text-3xl sm:text-4xl font-black mb-4">
-              Ready to automate your WhatsApp?
-            </h2>
-            <p className="text-primary-foreground/80 max-w-md mx-auto mb-8 text-lg">
-              Join 500+ businesses using ChatFlow AI to deliver instant,
-              intelligent customer experiences.
-            </p>
-            <Link
-              to="/register"
-              className="inline-flex items-center gap-2 rounded-xl bg-white text-primary px-8 py-3.5 text-base font-bold hover:bg-white/90 transition-all shadow-lg"
-            >
-              Start your free trial <ArrowRight className="h-4 w-4" />
-            </Link>
-            <p className="mt-4 text-sm text-primary-foreground/60">
-              No credit card required
-            </p>
+            {/* Glossy decorative backgrounds */}
+            <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/40 blur-[80px]" />
+            <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-emerald-500/30 blur-[80px]" />
+            
+            <div className="relative z-10 px-6 py-16 sm:py-24 lg:px-16 flex flex-col items-center text-center">
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+                viewport={{ once: true }}
+                className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md mb-8 shadow-inner border border-white/20"
+              >
+                <Bot className="h-10 w-10 text-emerald-400" />
+              </motion.div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl">
+                Ready to automate your{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                  WhatsApp?
+                </span>
+              </h2>
+              <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Join 500+ businesses using ChatFlow AI to deliver instant,
+                intelligent customer experiences at scale.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+                <Link
+                  to="/register"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-bold transition-all shadow-xl shadow-primary/20 hover:-translate-y-1"
+                >
+                  Start your free trial <ArrowRight className="h-5 w-5" />
+                </Link>
+                <Link
+                  to="/demo"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/10 px-8 py-4 text-lg font-bold transition-all hover:-translate-y-1 backdrop-blur-md"
+                >
+                  Book a Demo
+                </Link>
+              </div>
+              <p className="mt-8 text-sm text-slate-400 font-medium">
+                No credit card required · 14-day free trial · Cancel anytime
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>

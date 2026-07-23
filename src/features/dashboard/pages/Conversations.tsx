@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useConversationsStore, type Conversation } from '@/store/useConversationsStore';
+import { useConversationsStore } from '@/store/useConversationsStore';
 import { ConversationList } from '@/components/common/ConversationList';
 import { ChatMessage } from '@/components/common/ChatMessage';
 import { Input, Button, Avatar } from '@/components/ui';
-import { Send, Loader2, Bot, User } from 'lucide-react';
+import { Send, Loader2, Bot } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 
 // Mock messages per conversation id
@@ -26,7 +26,6 @@ export function Conversations() {
     selectedConversationId,
     setConversations,
     selectConversation,
-    loading,
     setLoading,
   } = useConversationsStore();
   const [messages, setMessages] = useState([] as typeof mockMessages[string]);
@@ -47,7 +46,7 @@ export function Conversations() {
       setLoading(false);
     }, 500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [setLoading, setConversations, selectedConversationId, selectConversation]);
 
   // Load messages when conversation changes
   useEffect(() => {

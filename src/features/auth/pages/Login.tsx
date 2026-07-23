@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { BotMessageSquare, Mail, Lock, ArrowRight } from 'lucide-react'
+import { AppLogo } from '@/components/common/AppLogo'
+import { Mail, Lock, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { useAuthStore, type Role } from '@/store/useAuthStore'
 
@@ -107,7 +108,7 @@ export const Login = () => {
               to="/"
               className="bg-primary text-primary-foreground p-3 rounded-xl shadow-lg"
             >
-              <BotMessageSquare size={32} />
+              <AppLogo size={32} />
             </Link>
           </div>
 
