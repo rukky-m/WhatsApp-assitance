@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { BotMessageSquare, Mail, CheckCircle2, RefreshCw } from 'lucide-react'
+import { AppLogo } from '@/components/common/AppLogo'
+import { Mail, CheckCircle2, RefreshCw } from 'lucide-react'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 
@@ -65,7 +66,7 @@ export function VerifyEmail() {
               to="/"
               className="bg-primary text-primary-foreground p-3 rounded-xl shadow-lg"
             >
-              <BotMessageSquare size={32} />
+              <AppLogo size={32} />
             </Link>
           </div>
 

@@ -26,7 +26,7 @@ export function Contacts() {
       mock.forEach((c) => addContact(c))
       setLoading(false)
     }, 500)
-  }, [])
+  }, [setLoading, addContact]);
 
   const filtered = contacts.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase()) ||

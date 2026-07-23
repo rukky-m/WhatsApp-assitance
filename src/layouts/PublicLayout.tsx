@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  BotMessageSquare,
   Menu,
   X,
   ChevronDown,
@@ -14,6 +13,8 @@ import {
 } from 'lucide-react'
 import { useTheme } from '@/hooks/useTheme'
 import { cn } from '@/utils/cn'
+
+import { AppLogo } from '@/components/common/AppLogo'
 
 const NAV_LINKS = [
   { label: 'Features', href: '/features' },
@@ -80,11 +81,15 @@ function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2 font-bold text-xl tracking-tight"
+            className="flex items-center gap-2 font-bold text-xl tracking-tight group"
           >
-            <div className="bg-primary text-primary-foreground p-1.5 rounded-lg shadow">
-              <BotMessageSquare size={22} />
-            </div>
+            <motion.div
+              animate={{ y: [0, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+              className="bg-primary text-primary-foreground p-1.5 rounded-lg shadow group-hover:scale-105 transition-transform"
+            >
+              <AppLogo size={22} />
+            </motion.div>
             <span>ChatFlow AI</span>
           </Link>
 
@@ -253,21 +258,21 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="bg-slate-950 text-slate-300 dark:bg-background dark:border-t dark:border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-2">
             <Link
               to="/"
-              className="flex items-center gap-2 font-bold text-lg tracking-tight mb-4"
+              className="flex items-center gap-2 font-bold text-lg tracking-tight mb-4 text-white dark:text-foreground"
             >
               <div className="bg-primary text-primary-foreground p-1.5 rounded-lg">
-                <BotMessageSquare size={20} />
+                <AppLogo size={20} />
               </div>
               ChatFlow AI
             </Link>
-            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
+            <p className="text-sm text-slate-400 dark:text-muted-foreground max-w-xs leading-relaxed">
               Automate your WhatsApp customer support and sales with intelligent
               AI that works 24/7.
             </p>
@@ -286,7 +291,7 @@ function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+                  className="flex h-8 w-8 items-center justify-center rounded-md border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition-colors dark:border-border dark:text-muted-foreground dark:hover:text-foreground dark:hover:border-foreground/40"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -297,7 +302,7 @@ function Footer() {
           {/* Links */}
           {Object.entries(FOOTER_LINKS).map(([section, links]) => (
             <div key={section}>
-              <h3 className="text-sm font-semibold text-foreground mb-4">
+              <h3 className="text-sm font-semibold text-white dark:text-foreground mb-4">
                 {section}
               </h3>
               <ul className="space-y-3">
@@ -305,7 +310,7 @@ function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-slate-400 hover:text-white transition-colors dark:text-muted-foreground dark:hover:text-foreground"
                     >
                       {link.label}
                     </Link>
@@ -316,18 +321,18 @@ function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="mt-12 pt-8 border-t border-slate-800 dark:border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400 dark:text-muted-foreground">
           <p>© {new Date().getFullYear()} ChatFlow AI. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link
               to="/privacy"
-              className="hover:text-foreground transition-colors"
+              className="hover:text-white dark:hover:text-foreground transition-colors"
             >
               Privacy
             </Link>
             <Link
               to="/terms"
-              className="hover:text-foreground transition-colors"
+              className="hover:text-white dark:hover:text-foreground transition-colors"
             >
               Terms
             </Link>

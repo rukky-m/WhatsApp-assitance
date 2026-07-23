@@ -8,7 +8,7 @@ import { Modal } from '@/components/ui/Modal'
 import { CheckCircle2 } from 'lucide-react'
 
 export function Tasks() {
-  const { tasks, addTask, updateTask, deleteTask } = useTasksStore()
+  const { tasks, addTask, deleteTask } = useTasksStore()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [newTitle, setNewTitle] = useState('')
   const [newDescription, setNewDescription] = useState('')

@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { BotMessageSquare, Mail, Lock, User, ArrowRight } from 'lucide-react'
+import { AppLogo } from '@/components/common/AppLogo'
+import { Mail, Lock, User, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { useAuthStore } from '@/store/useAuthStore'
 
@@ -28,7 +29,7 @@ export const Register = () => {
         <div className="p-8">
           <div className="flex justify-center mb-6">
             <div className="bg-primary text-primary-foreground p-3 rounded-xl shadow-lg">
-              <BotMessageSquare size={32} />
+              <AppLogo size={32} />
             </div>
           </div>
           

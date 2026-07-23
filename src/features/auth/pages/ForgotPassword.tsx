@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BotMessageSquare, Mail, ArrowLeft } from 'lucide-react'
+import { AppLogo } from '@/components/common/AppLogo'
+import { Mail, ArrowLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 
@@ -33,7 +34,7 @@ export function ForgotPassword() {
               to="/"
               className="bg-primary text-primary-foreground p-3 rounded-xl shadow-lg"
             >
-              <BotMessageSquare size={32} />
+              <AppLogo size={32} />
             </Link>
           </div>
 
